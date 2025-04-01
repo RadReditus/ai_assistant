@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # ai_assistant
 telegram bot + google sheets API + GPT API + Promting + python
 =======
@@ -18,6 +18,7 @@ bot-assistant — это Telegram-бот, который автоматизир�
 # Used technologies
 ```
 Python 3.10+
+together: AI модель + применение промтинга
 aiogram: Библиотека для создания Telegram-ботов.
 Google Sheets API: Для сохранения данных лидов.
 SpeechRecognition: Для распознавания голосовых сообщений.
