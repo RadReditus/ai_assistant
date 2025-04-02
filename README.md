@@ -91,6 +91,29 @@ ______________________
 Укажите путь к credentials.json в .env.
 Создайте Google Таблицу и дайте доступ вашему Service Account (email из credentials.json).
 ```
+
+### Setting file .env
+```
+Main fields of file:
+
+GOOGLE_SHEET_DATAS = ./config/example-google-credentials.json
+GOOGLE_SPREADSHEET_ID = example_spreadsheet_id
+SCOPES = https://www.googleapis.com/auth/spreadsheets
+AI_TOKEN = example_ai_token
+AI_MODEL = example-ai/model-name
+
+TG_BOT_TOKEN = example_bot_token
+TG_GROUP_ID = example_group_id
+LINK_TG_BOT = t.me/example_bot_link
+
+TEST_GOOGLE_SHEET_DATAS = ./config/example-google-credentials.json
+TEST_GOOGLE_SPREADSHEET_ID = example_test_spreadsheet_id
+TEST_SCOPES = https://www.googleapis.com/auth/spreadsheets
+
+DEBUG = True
+```
+
+
 ### Compiles and hot-reloads for development
 ```
 python main.py
@@ -230,8 +253,18 @@ Developer: Karimov Valievich Radik
 ### Adds
 ```
 Масштабируемость: Для добавления новых полей в форму достаточно расширить класс ClientForm и обновить логику сохранения в sheet_worker.py.
+
 Промптинг: Промпты в services/config.py позволяют легко настраивать диалог с пользователем, например, добавлять более персонализированные сообщения.
+
 Логирование: Логи можно настроить для записи в файл или отправки в систему мониторинга (например, Sentry) через изменение logger_func.py
+
+data folder: Папка data нужна для содержания временных или сторонних статичных файлов. На момент первой версии проекта папка эта содержит папку logs с файлом логов предупреждений разного уровня маркируя их по цвету, времени и ключевому слову уровня опасности а так же в каждом предупреждении содержится техническое маркирование ( пример: " [get_sheet_data action]: Данных нет " , где [get_sheet_data action] техническое маркирование в каком методе проходит предупреждение а после идёт само предупреждение)
+Примечание - Папка data должна быть создана в корне проекта как один из элементов архитектуры (Полная первичная архитектура - main.py, пакеты - config, data, handlers, services)
+
+config folder: Данная папка должна содержать .env файл с ключевыми данными настроек по всему проекту а так же эта папка должна быть в корне проекта.
+
+Файл .env и его переменные: Если в файле .env, в поле DEBUG значение является True то данные из .env подтягиваются из полей тестового назначения а так же логирование производится в автоматически созданный файл test_general.log иначе в general.log
+
 
 ```
 
